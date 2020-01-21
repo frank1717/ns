@@ -15,8 +15,15 @@ Including another URLconf
 """
 from django.conf.urls import include,url
 from django.contrib import admin
+from nss import views
+from django.contrib.auth import views,authenticate,login
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^vip/',include('nss.urls')),
+    url(r'^accounts/',include('django.contrib.auth.urls')),
+    url(r'^$',views.LoginView.as_view(template_name='registration/login.html'),name='login'),
+    url(r'^logout/',views.logout_then_login, name = 'logout'),
+    #url(r'^reinicio2/(?P<id_reinicio>[0-9A-Za-z_\-]+)$',views.reinicio2,name='reinicio2')
+    #url(r'^reinicio2/(?P<id_reinicio>[0-9A-Za-z_\-]+)',views.reinicio2,name='reinicio2')
 ]

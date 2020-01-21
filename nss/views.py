@@ -10,6 +10,24 @@ import json
 import time
 from datetime import datetime
 # Create your views here.
+# def reinicio(request,id_reinicio):
+#        #ip = 'localhost'  # change your proxy's ip
+#    #port = 22  # change your proxy's port
+#    #socks.setdefaultproxy(socks.PROXY_TYPE_SOCKS5, ip, port)
+#    #socket.socket = socks.socksocket
+#    #dictionario = {"id_reinicio": id_reinicio}
+#    #print (dictionario)
+#    print 'Ale'
+#    return render(request, 'vip/respuesta.html')
+# def reinicio2(request,id_reinicio):
+#    #ip = 'localhost'  # change your proxy's ip
+#    #port = 22  # change your proxy's port
+#    #socks.setdefaultproxy(socks.PROXY_TYPE_SOCKS5, ip, port)
+#    #socket.socket = socks.socksocket
+#    #dictionario = {"id_reinicio": id_reinicio}
+#    #print (dictionario)
+#    print 'Ale'
+#    return render(request, 'vip/respuesta.html')
 def vip(request):
     IP = "192.168.33.70"
     URL = "http://" + IP + "/nitro/v1/config/"
@@ -34,11 +52,10 @@ def vip(request):
     lbvserver2 = res2["lbvserver"]
     # print("res22" + str(lbvserver2))
     dictionario = {"lbvserver2": lbvserver2}
-    print(dictionario)
+    #print 'hola'
+    #print(dictionario)
     return render(request, 'vip/vip.html', dictionario)
-
-
-def reinicio(request, id_reinicio):
+def reinicio(request,id_reinicio,id_user):
    IP = "192.168.33.70"
    URL = "http://" + IP + "/nitro/v1/config/"
    virtual_server_conf = "lbvserver"
@@ -51,18 +68,17 @@ def reinicio(request, id_reinicio):
    headers = {'Content-Type': 'application/vnd.com.citrix.netscaler.lbvserver+json',
               'Authorization': AUTHORIZATION}
    response2 = requests.post(URL_DISABLE_VSERVER, data=json.dumps(payload), headers=headers)
+   
    if response2.status_code == 200:
         print 'disable correcto'
    time.sleep(7)
    response3 = requests.post(URL_ENABLE_VSERVER, data=json.dumps(payload), headers=headers)
    if response3.status_code == 200:
-        print'enable correcto'
+        print 'enable correcto'
    else:
-        print'fallo reinicio'
+        print 'fallo reinicio'
    name_vip2 = {'id_reinicio': id_reinicio}
-    #l = Log(name_vip=id_reinicio, name_user=id_user, action='reinicio')
-    #l.save()
-    #print(name_vip2)
-   return render(request, 'vip/respuesta.html', name_vip2)
-
-    
+   l = Log(name_vip = id_reinicio , name_user=id_user,action='reinicio')
+   l.save()
+   print(name_vip2)
+   return render(request, 'vip/respuesta.html',name_vip2)

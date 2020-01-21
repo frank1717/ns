@@ -43,7 +43,7 @@
                 <a class="dropdown-item" href="#">Perfil</a>
                 <a class="dropdown-item" href="#">Vista</a>
                 <div class="dropdown-divider"></div> {% endcomment %}
-                {% comment %} <a class="dropdown-item" href="{% url 'logout' %}">Salir</a> {% endcomment %}
+                <a class="dropdown-item" href="{% url 'logout' %}">Salir</a>
                 </div>
             </li>
         </ul>  
@@ -91,9 +91,8 @@
                             <td>{{dato1.effectivestate}}</td>
                             <td>
                             {% if perms.ns.change_vpx %}
-                                <a href="reinicio/{{dato1.name}}" class="btn btn-primary btn-sm">Reiniciar</a> 
-                                {% comment %} <a href='{% url 'reinicio' dato1.name %}' class="btn btn-primary btn-sm">Reiniciar</a>  {% endcomment %}
-                            {% endif %} 
+                                <a href="{% url 'reinicio' id_reinicio=dato1.name id_user=user.username%}" class="btn btn-primary btn-sm">Reiniciar</a> 
+                            {% endif %}
                             </td>
                           </tr>
                          {% endfor %}
