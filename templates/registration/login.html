@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <title>NetScaler</title>
+</head>
+<body >
+    <div class="container">
+    <div class="row">
+        <div class="col-sm"></div>
+        <div class="col-sm">
+            <br>
+            <div class="card p-5">
+            <form met class="form-signin" method="post">
+            {% csrf_token %}
+            <div class="text-center mb-4 bg-danger">
+                <img class="mb-4 mt-2" src="https://www.claro.com.pe/recursos_contenido/personas/d848845f-eb56-4403-bc7a-b8dcfa4ed521-images252Flogo-claro-blanco.png" alt="" >
+                <h1 class="h3 mb-3 font-weight-normal text-white pb-2">Portal NetScaler</h1>
+            </div>
+            <div class="form-label-group">
+                <input type="text"  class="form-control" placeholder="Ingrese Usuario" name="username" required>
+            </div>
+            <br>
+            <div class="form-label-group">
+                <input type="password" class="form-control" placeholder="Ingrese Contraseña" name="password" required>
+            </div> 
+            <br> 
+            <button class="btn btn-lg btn-primary btn-block bg-danger" type="submit">INGRESAR</button>
+            <p class="mt-5 mb-3 text-muted text-center">© 2017-2019</p>
+            </form>
+            </div>
+        </div>
+        <div class="col-sm"></div>
+    </div>
+    </div>
+</body>
+</html>

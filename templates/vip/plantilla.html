@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <!--meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <--meta http-equiv="X-UA-Compatible" content="ie=edge"-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    {% include "barra_navegacion.html" %}
+    <main class="py-4">
+        <div class="container">
+            <div class="row justify-content-center">
+                <form method="GET" action="http://127.0.0.1:8000/home" accept-charset="UTF-8" class="form-inline">
+                    <div class="form-group mb-2"><select name="state_id" class="form-control"></select></div>
+                    <div class="form-group mx-sm-3 mb-2"><input placeholder="Nombre" name="name" type="text"
+                            class="form-control"></div>
+                    <div class="form-group"><button type="submit" class="btn btn-outline-primary mb-2">Buscar
+                            <span class="glyphicon glyphicon-search"></span></button></div>
+                </form>
+                <form method="POST" action="http://127.0.0.1:8000/vpx" accept-charset="UTF-8"
+                    class="form-inline ml-1 mb-2"><input name="_token" type="hidden"
+                        value="CftnrZ7D4aB2dKR6azvmwkRcy4O70sIICd0Pvc6L">
+                    <div class="form-group"><input type="submit" value="Actualizar" class="btn btn-outline-primary"></div>
+                </form>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Nombre VIP</th>
+                                <th scope="col">Estado</th>
+                                <th scope="col">Acci&oacute;n</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% if lista%}
+                                {%for vip in lista %}
+                                    <tr>
+                                        <th scope="col">{{pos}}</th>
+                                        <td scope="col">{{vip.name}}</td>
+                                        <td scope="col">{{vip.state}}</td>
+                                        <td scope="col">Acci&oacute;n</td>
+                                    </tr>
+                                {% endfor %}
+                            {% else %}
+                                    <tr>
+                                        <td colspan="4" align="center" style="color: red">No hay VIPs a mostrar</td>
+                                    </tr>
+                            {% endif %}
+                        </tbody>
+                    </table> <br>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>
